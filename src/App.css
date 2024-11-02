@@ -1,38 +1,299 @@
-.App {
-  text-align: center;
+* {
+  color: #5B5B5B;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header>section {
+  background-color: #3D3028;
+  height: 5vh;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+
+}
+
+.fa-x {
+  transform: scale(1.2, 1);
+}
+
+header>section>div:nth-child(1) {
+  margin-left: 5%;
+}
+
+header>section>div:nth-child(2) {
+  margin-right: 5%;
+}
+
+.modalOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+.modal {
+  width: 80%;
+  padding: 5%;
+  background-color: white;
+  border-radius: 1rem;
+}
+
+.modal>div:nth-child(1) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalFormButtons {
+  margin-top: 2vh;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+/*--CARDS--*/
+
+
+
+/*--ITEM CARD--*/
+
+
+
+.itemCard {
+  display: flex;
+  align-items: center;
+  margin-top: 2vh;
+  width: 100%;
+  justify-content: space-between;
+  border-radius: 10px;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.itemCard h3 {
+  font-weight: 600;
+}
+
+.itemCard>div:nth-child(1) {
+  margin-left: 5%;
+}
+
+.itemCard>div:nth-child(2) {
+  margin-right: 5%;
+  display: grid;
+  grid-template-columns: auto;
+  display: flex;
+  grid-gap: 8vw;
+
+}
+
+
+.itemCard>div>i:nth-child(1) {
+  color: #0D6943;
+}
+
+.itemCard>div>i:nth-child(2) {
+  color: #E67C0E;
+}
+
+.itemCard>div>i:nth-child(3) {
+  color: #CC2A17;
+
+}
+
+
+
+/*-----*/
+
+
+
+
+/*--USER CARD--*/
+
+.userCard {
+  display: flex;
+  align-items: center;
+  margin-top: 2vh;
+  width: 100%;
+  justify-content: space-between;
+  border-radius: 10px;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.userCard h3 {
+  font-weight: 600;
+}
+
+.userCard>div>i {
+  color: #CC2A17;
+}
+
+.userCard>div:nth-child(1) {
+  display: grid;
+  grid-template-columns: auto;
+  display: flex;
+  align-items: center;
+  grid-gap: 2vw;
+
+
+}
+
+.userCard>div:nth-child(1)>div {
+  background-color: #5B5B5B;
+  height: 35px;
+  width: 35px;
+  border-radius: 5px;
+}
+
+
+.userCard>div:nth-child(1) {
+  margin-left: 5%;
+}
+
+.userCard>div:nth-child(2) {
+  margin-right: 5%;
+}
+
+/*-----*/
+
+
+
+
+
+
+/*------------------------------------------*/
+
+
+
+/*---LIST---*/
+
+
+/*--ITEM LIST--*/
+
+.itemList {
+  margin: 0 auto;
+  margin-top: 3vh;
+  border-radius: 10px;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 5%;
+  width: 80%;
+  margin-bottom: 5vh;
+}
+
+.itemList h2 {
+  margin: 0;
+  font-weight: 600;
+}
+
+/*-----*/
+
+
+
+
+
+/*--USER LIST--*/
+
+.userList {
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 5%;
+  width: 80%;
+}
+
+.userList h2 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.userList>div:nth-child(1) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.leaveListButton {
+  background-color: #CC2A17;
   color: white;
+  border-radius: 10px;
+  border: none;
+  padding: 0.5rem 2rem 0.5rem 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+
+/*-----*/
+
+
+
+/*------------------------------------------*/
+
+/*---CONTROL---*/
+
+
+
+/*--LIST DETAIL--*/
+
+.listToolbar {
+  display: flex;
+  justify-content: space-between;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.listToolbar h2 {
+  font-weight: 600;
 }
+
+.listToolbar i {
+  font-size: 1.5rem;
+
+}
+
+.listToolbar>div {
+  display: flex;
+  align-items: center;
+}
+
+.listToolbar>div:nth-child(1) {
+  margin-left: 5%;
+  display: grid;
+  grid-template-columns: auto;
+  display: flex;
+  grid-gap: 3vw;
+}
+
+.listToolbar>div:nth-child(2) {
+  margin-right: 5%;
+  display: grid;
+  grid-template-columns: auto;
+  display: flex;
+  grid-gap: 3vw;
+}
+
+.addItemButton {
+  background-color: #0D6943;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+}
+
+/*-----*/
+
+
+
+/*------------------------------------------*/
