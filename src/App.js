@@ -20,9 +20,15 @@ function App() {
         <ListProvider>
           <UserProvider>
             <ItemProvider>
-              <ListToolbar />
-              <UserList />
-              <ItemList />
+              <section>
+                <ListToolbar />
+              </section>
+              <section>
+                <UserList />
+              </section>
+              <section>
+                <ItemList />
+              </section>
             </ItemProvider>
           </UserProvider>
         </ListProvider>

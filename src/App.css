@@ -12,8 +12,29 @@ header>section {
 
 }
 
+button {
+  border-radius: 10px;
+  border: none;
+  padding: 0.5rem 2rem 0.5rem 2rem;
+  background-color: white;
+  font-size: 0.8rem;
+  font-weight: 500;
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
 .fa-x {
   transform: scale(1.2, 1);
+  color: #CC2A17;
+}
+
+.fa-pen-to-square {
+  color: #E67C0E;
+}
+
+.hidden {
+  display: none;
 }
 
 header>section>div:nth-child(1) {
@@ -23,6 +44,12 @@ header>section>div:nth-child(1) {
 header>section>div:nth-child(2) {
   margin-right: 5%;
 }
+
+
+
+
+
+/*---MODAL---*/
 
 .modalOverlay {
   position: absolute;
@@ -34,6 +61,7 @@ header>section>div:nth-child(2) {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
 .modal {
@@ -56,12 +84,12 @@ header>section>div:nth-child(2) {
 }
 
 
+/*------------------------------------------*/
+
+
 /*--CARDS--*/
 
-
-
 /*--ITEM CARD--*/
-
 
 
 .itemCard {
@@ -95,24 +123,7 @@ header>section>div:nth-child(2) {
 }
 
 
-.itemCard>div>i:nth-child(1) {
-  color: #0D6943;
-}
-
-.itemCard>div>i:nth-child(2) {
-  color: #E67C0E;
-}
-
-.itemCard>div>i:nth-child(3) {
-  color: #CC2A17;
-
-}
-
-
-
 /*-----*/
-
-
 
 
 /*--USER CARD--*/
@@ -134,9 +145,6 @@ header>section>div:nth-child(2) {
   font-weight: 600;
 }
 
-.userCard>div>i {
-  color: #CC2A17;
-}
 
 .userCard>div:nth-child(1) {
   display: grid;
@@ -165,11 +173,6 @@ header>section>div:nth-child(2) {
 }
 
 /*-----*/
-
-
-
-
-
 
 /*------------------------------------------*/
 
@@ -294,6 +297,73 @@ header>section>div:nth-child(2) {
 
 /*-----*/
 
-
-
 /*------------------------------------------*/
+
+
+@media screen and (min-width: 800px) {
+  .hidden {
+    display: unset;
+  }
+
+  .fa-ellipsis {
+    display: none;
+  }
+
+  .deleteListButton {
+    background-color: #CC2A17;
+    color: white;
+  }
+
+  .listToolbarButtons {
+    display: grid;
+    grid-template-columns: auto;
+    display: flex;
+    grid-gap: 1vw;
+  }
+
+  .listToolbar>div:nth-child(1) {
+    margin-left: 5%;
+    display: grid;
+    grid-template-columns: auto;
+    display: flex;
+    grid-gap: 1vw;
+  }
+
+  .userList {
+    padding-top: 2%;
+    padding-bottom: 2%;
+  }
+
+  .itemList {
+    padding-top: 2%;
+    padding-bottom: 2%;
+  }
+
+  .itemList>div:nth-child(1) {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .itemCard>div:nth-child(2) {
+    margin-right: 3%;
+    grid-gap: 4vw;
+  }
+
+  .itemCard>div:nth-child(1) {
+    margin-left: 3%;
+  }
+
+  .userCard>div:nth-child(1) {
+    margin-left: 2%;
+  }
+
+  .userCard>div:nth-child(2) {
+    margin-right: 2%;
+  }
+
+  .userCard>div:nth-child(1) {
+    grid-gap: 1vw;
+  }
+
+}

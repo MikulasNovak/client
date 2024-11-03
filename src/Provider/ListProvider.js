@@ -2,16 +2,18 @@ import React, { createContext, useState } from "react";
 
 let listData = [
   {
-    id: "1",
-    owner_id: "1",
+    id: 1,
+    owner_id: 1,
     title: "One",
-    memberList: ["2"],
+    archived: false,
+    memberList: [2, 3],
   },
   {
-    id: "2",
-    owner_id: "1",
-    title: "One",
-    memberList: ["1", "3"],
+    id: 2,
+    owner_id: 2,
+    title: "Two",
+    archived: false,
+    memberList: [3],
   },
 ];
 

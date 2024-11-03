@@ -3,10 +3,10 @@ import { ListContext } from "./ListProvider";
 
 // Initial item data
 let itemData = [
-  { id: "1", list_id: 1, title: "One", resolved: false },
-  { id: "2", list_id: 1, title: "Two", resolved: false },
-  { id: "3", list_id: 1, title: "Three", resolved: false },
-  { id: "4", list_id: 3, title: "Four", resolved: false },
+  { id: 1, list_id: 1, title: "One", resolved: false },
+  { id: 2, list_id: 1, title: "Two", resolved: false },
+  { id: 3, list_id: 1, title: "Three", resolved: true },
+  { id: 4, list_id: 3, title: "Four", resolved: false },
 ];
 
 export const ItemContext = createContext();
@@ -14,16 +14,23 @@ export const ItemContext = createContext();
 function ItemProvider({ children }) {
   const { listData } = useContext(ListContext);
   const [data, setData] = useState(itemData);
+  const [filterOption, setFilterOption] = useState("all");
 
   useEffect(() => {
-    handleLoad(1); //CHANGABLE PROP
-  }, [listData]);
+    handleLoad(1, filterOption);
+  }, [listData, filterOption]);
 
-  function handleLoad(list_id) {
-    setData(() => {
-      const filteredItems = itemData.filter((item) => item.list_id === list_id);
-      return filteredItems;
+  function handleLoad(list_id, option) {
+    //Issues after marking item as resolved
+    const items = itemData.filter((item) => item.list_id === list_id);
+
+    const filteredItems = items.filter((item) => {
+      if (option === "resolved") return item.resolved;
+      if (option === "unresolved") return !item.resolved;
+      return true;
     });
+
+    setData(filteredItems);
   }
 
   function handleDelete(item_id) {
@@ -56,6 +63,8 @@ function ItemProvider({ children }) {
 
   const value = {
     data: data || [],
+    setFilterOption,
+    filterOption,
     handlerMap: {
       handleDelete,
       handleResolve,

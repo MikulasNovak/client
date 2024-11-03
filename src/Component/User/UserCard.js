@@ -1,9 +1,11 @@
 import { UserContext } from "../../Provider/UserProvider";
 import "./../../App.css";
 import React, { useContext } from "react";
+import { ListContext } from "../../Provider/ListProvider";
 
 function UserCard({ user }) {
-  const { handlerMap } = useContext(UserContext);
+  const { handlerMap, loggedInUser } = useContext(UserContext);
+  const { listData } = useContext(ListContext);
 
   return (
     <div className="userCard">
@@ -14,7 +16,7 @@ function UserCard({ user }) {
       <div>
         <i
           className="fa-solid fa-x"
-          onClick={(e) => handlerMap.handleKick(user.id)}
+          onClick={(e) => handlerMap.handleKick(1, user.id)}
         ></i>
       </div>
     </div>
