@@ -1,11 +1,9 @@
-import { UserContext } from "../../Provider/UserProvider";
+import { ListContext } from "../../Provider/ListProvider";
 import "./../../App.css";
 import React, { useContext } from "react";
-import { ListContext } from "../../Provider/ListProvider";
 
 function UserCard({ user }) {
-  const { handlerMap, loggedInUser } = useContext(UserContext);
-  const { listData } = useContext(ListContext);
+  const { handlerMap } = useContext(ListContext);
 
   return (
     <div className="userCard">

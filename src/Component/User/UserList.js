@@ -1,21 +1,27 @@
 import UserCard from "./UserCard";
 import { useContext } from "react";
-import { UserContext } from "../../Provider/UserProvider";
 import { ListContext } from "../../Provider/ListProvider";
+import { UserContext } from "../../Provider/UserProvider";
 
 function UserList() {
-  const { data, handlerMap } = useContext(UserContext);
+  const { listMembers, handlerMap } = useContext(ListContext);
+  const { loggedInUser } = useContext(UserContext);
 
   return (
     <div className="userList">
       <div>
         <h2>Members</h2>
         <div>
-          <button className="leaveListButton">Leave</button>
+          <button
+            className="leaveListButton"
+            onClick={(e) => handlerMap.handleLeave(1, loggedInUser)}
+          >
+            Leave
+          </button>
         </div>
       </div>
       <div>
-        {data.map((user) => (
+        {listMembers.map((user) => (
           <UserCard key={user.id} user={user} />
         ))}
       </div>
