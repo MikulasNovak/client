@@ -174,6 +174,24 @@ header>section>div:nth-child(2) {
 
 /*-----*/
 
+/*--LIST CARD--*/
+.listCard {
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 5%;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 5%;
+  width: 80%;
+  height: 10vh;
+}
+
+
+
+/*-----*/
+
 /*------------------------------------------*/
 
 
@@ -242,6 +260,11 @@ header>section>div:nth-child(2) {
 
 /*-----*/
 
+/*--LIST LIST--*/
+
+.listList {}
+
+/*-----*/
 
 
 /*------------------------------------------*/
@@ -250,28 +273,28 @@ header>section>div:nth-child(2) {
 
 
 
-/*--LIST DETAIL--*/
+/*--TOOLBARS--*/
 
-.listToolbar {
+.detailToolbar {
   display: flex;
   justify-content: space-between;
 }
 
-.listToolbar h2 {
+.detailToolbar h2 {
   font-weight: 600;
 }
 
-.listToolbar i {
+.detailToolbar i {
   font-size: 1.5rem;
 
 }
 
-.listToolbar>div {
+.detailToolbar>div {
   display: flex;
   align-items: center;
 }
 
-.listToolbar>div:nth-child(1) {
+.detailToolbar>div:nth-child(1) {
   margin-left: 5%;
   display: grid;
   grid-template-columns: auto;
@@ -279,7 +302,7 @@ header>section>div:nth-child(2) {
   grid-gap: 3vw;
 }
 
-.listToolbar>div:nth-child(2) {
+.detailToolbar>div:nth-child(2) {
   margin-right: 5%;
   display: grid;
   grid-template-columns: auto;
@@ -287,7 +310,24 @@ header>section>div:nth-child(2) {
   grid-gap: 3vw;
 }
 
-.addItemButton {
+.listToolbar>div:nth-child(1) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.listToolbar>div:nth-child(2) {
+
+  margin-left: 5%;
+
+}
+
+
+
+
+.addButton {
   background-color: #0D6943;
   color: white;
   border-radius: 10px;
@@ -340,7 +380,7 @@ header>section>div:nth-child(2) {
   }
 
   .itemList>div:nth-child(1) {
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: space-between;
   }

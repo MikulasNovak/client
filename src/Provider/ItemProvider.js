@@ -9,15 +9,20 @@ let itemData = [
   { id: 4, list_id: 3, title: "Four", resolved: false },
 ];
 
+
+
 export const ItemContext = createContext();
 
 function ItemProvider({ children }) {
-  const { listData } = useContext(ListContext);
+  const { listData, listId } = useContext(ListContext);
   const [data, setData] = useState(itemData);
   const [filterOption, setFilterOption] = useState("all");
 
+  let urlArray = window.location.pathname.split('/');
+  let currentListId = Number(urlArray[2]); //MAYBE USE STATE ?
+
   useEffect(() => {
-    handleLoad(1, filterOption);
+    handleLoad(currentListId, filterOption);
   }, [listData, filterOption]);
 
   function handleLoad(list_id, option) {
@@ -40,7 +45,7 @@ function ItemProvider({ children }) {
   function handleCreate(title) {
     const newItem = {
       id: Math.random().toString(),
-      list_id: 1, //CHANGABLE
+      list_id: currentListId, //CHANGABLE
       title: title,
       resolved: false,
     };
@@ -62,7 +67,7 @@ function ItemProvider({ children }) {
   }
 
   const value = {
-    data: data || [],
+    itemData: data || [],
     setFilterOption,
     filterOption,
     handlerMap: {

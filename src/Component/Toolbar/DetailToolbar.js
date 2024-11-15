@@ -3,9 +3,13 @@ import ItemCreateModal from "../Item/CreateModal";
 import AddMemberModal from "../List/AddMemberModal";
 import "../../App.css";
 import { ListContext } from "../../Provider/ListProvider";
+import { useNavigate } from "react-router-dom"
+
 
 function DetailToolbar() {
-  const { handlerMap, listData } = useContext(ListContext);
+  const { handlerMap, listData, currentListId } = useContext(ListContext);
+  const navigate = useNavigate();
+
   const [isModalItemCreateOpen, setIsModalItemCreateOpen] = useState(false);
   const closeModalItemCreate = useCallback(
     () => setIsModalItemCreateOpen(false),
@@ -21,7 +25,7 @@ function DetailToolbar() {
   const [isEditing, setIsEditing] = useState(false);
   const [newListName, setNewListName] = useState("");
 
-  const currentList = listData[0];
+  const currentList = listData.find((list) => list.id === currentListId);
 
   const handleEditListName = (e) => {
     e.preventDefault();
@@ -38,9 +42,9 @@ function DetailToolbar() {
   };
 
   return (
-    <div className="listToolbar">
+    <div className="detailToolbar">
       <div>
-        <i className="fa-solid fa-arrow-left"></i>
+        <i className="fa-solid fa-arrow-left" onClick={() => navigate('/')}></i>
         {isEditing ? (
           <form onSubmit={handleEditListName} className="editListNameForm">
             <input
@@ -67,7 +71,7 @@ function DetailToolbar() {
         <div>
           <i className="fa-solid fa-ellipsis"></i>
         </div>
-        <div className="listToolbarButtons">
+        <div className="detailToolbarButtons">
           <button
             className="archiveListButton hidden"
             onClick={(e) => handlerMap.handleArchive(currentList.id)}
@@ -82,7 +86,7 @@ function DetailToolbar() {
           </button>
           <button className="deleteListButton hidden">Delete List</button>
           <button
-            className="addItemButton"
+            className="addButton"
             onClick={() => setIsModalItemCreateOpen(true)}
           >
             Add item

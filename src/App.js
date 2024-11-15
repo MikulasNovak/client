@@ -1,40 +1,17 @@
 import "./App.css";
-import ItemList from "./Component//Item/ItemList";
-import UserList from "./Component/User/UserList";
-import ListToolbar from "./Component/Toolbar/DetailToolbar";
-import UserSelect from "./Component/User/UserSelect";
-
-import ItemProvider from "./Provider/ItemProvider";
-import UserProvider from "./Provider/UserProvider";
-import ListProvider from "./Provider/ListProvider";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+import Detail from "./Page/Detail";
+import List from "./Page/List";
 
 function App() {
   return (
     <div className="App">
-      <UserProvider>
-        <header>
-          <section>
-            <div>LOGO</div>
-            <UserSelect />
-          </section>
-        </header>
-        <main>
-          <ListProvider>
-            <ItemProvider>
-              <section>
-                <ListToolbar />
-              </section>
-              <section>
-                <UserList />
-              </section>
-              <section>
-                <ItemList />
-              </section>
-            </ItemProvider>
-          </ListProvider>
-        </main>
-        <footer></footer>
-      </UserProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<List />} />
+          <Route path="list/:id" element={<Detail />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

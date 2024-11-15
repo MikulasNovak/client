@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { ItemContext } from "../../Provider/ItemProvider";
 
 function ItemList() {
-  const { data, setFilterOption } = useContext(ItemContext);
+  const { itemData, setFilterOption } = useContext(ItemContext);
   function handleFilterChange(event) {
     setFilterOption(event.target.value); // This triggers handleLoad in the provider
   }
@@ -44,7 +44,7 @@ function ItemList() {
         </div>
       </div>
       <div>
-        {data.map((item) => (
+        {itemData.map((item) => (
           <ItemCard key={item.id} item={item} />
         ))}
       </div>

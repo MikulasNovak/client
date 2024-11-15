@@ -4,7 +4,7 @@ import { ListContext } from "../../Provider/ListProvider";
 import { UserContext } from "../../Provider/UserProvider";
 
 function UserList() {
-  const { listMembers, handlerMap } = useContext(ListContext);
+  const { filteredUsers, handlerMap } = useContext(ListContext);
   const { loggedInUser } = useContext(UserContext);
 
   return (
@@ -21,7 +21,7 @@ function UserList() {
         </div>
       </div>
       <div>
-        {listMembers.map((user) => (
+        {filteredUsers.map((user) => (
           <UserCard key={user.id} user={user} />
         ))}
       </div>
