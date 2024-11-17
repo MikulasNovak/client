@@ -3,12 +3,12 @@ import ItemCreateModal from "../Item/CreateModal";
 import AddMemberModal from "../List/AddMemberModal";
 import "../../App.css";
 import { ListContext } from "../../Provider/ListProvider";
-import { useNavigate } from "react-router-dom"
-
+import { useNavigate, useParams } from "react-router-dom";
 
 function DetailToolbar() {
-  const { handlerMap, listData, currentListId } = useContext(ListContext);
+  const { handlerMap, listData } = useContext(ListContext);
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const [isModalItemCreateOpen, setIsModalItemCreateOpen] = useState(false);
   const closeModalItemCreate = useCallback(
@@ -24,8 +24,7 @@ function DetailToolbar() {
 
   const [isEditing, setIsEditing] = useState(false);
   const [newListName, setNewListName] = useState("");
-
-  const currentList = listData.find((list) => list.id === currentListId);
+  const currentList = listData.find((list) => list.id === Number(id));
 
   const handleEditListName = (e) => {
     e.preventDefault();
@@ -41,10 +40,27 @@ function DetailToolbar() {
     setIsEditing(true);
   };
 
+  let archivedColor;
+  let color;
+  switch (true) {
+    case currentList.archived:
+      archivedColor = "#006DD6";
+      color = "#FFFFFF";
+      break;
+    case !currentList.archived:
+      archivedColor = "#FFFFFF";
+      color = "#000000";
+      break;
+    default:
+      archivedColor = "#FFFFFF";
+      color = "#000000";
+      break;
+  }
+
   return (
     <div className="detailToolbar">
       <div>
-        <i className="fa-solid fa-arrow-left" onClick={() => navigate('/')}></i>
+        <i className="fa-solid fa-arrow-left" onClick={() => navigate("/")}></i>
         {isEditing ? (
           <form onSubmit={handleEditListName} className="editListNameForm">
             <input
@@ -75,6 +91,7 @@ function DetailToolbar() {
           <button
             className="archiveListButton hidden"
             onClick={(e) => handlerMap.handleArchive(currentList.id)}
+            style={{ backgroundColor: archivedColor, color: color }}
           >
             Archive list
           </button>

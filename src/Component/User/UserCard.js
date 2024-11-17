@@ -3,7 +3,7 @@ import "./../../App.css";
 import React, { useContext } from "react";
 
 function UserCard({ user }) {
-  const { handlerMap } = useContext(ListContext);
+  const { handlerMap, listId } = useContext(ListContext);
 
   return (
     <div className="userCard">
@@ -14,7 +14,7 @@ function UserCard({ user }) {
       <div>
         <i
           className="fa-solid fa-x"
-          onClick={(e) => handlerMap.handleKick(1, user.id)}
+          onClick={(e) => handlerMap.handleKick(listId, user.id)}
         ></i>
       </div>
     </div>

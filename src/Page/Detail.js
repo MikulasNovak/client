@@ -1,40 +1,40 @@
 import "./../App.css";
 import ItemList from "../Component/Item/ItemList";
 import UserList from "../Component/User/UserList";
-import ListToolbar from "../Component/Toolbar/DetailToolbar";
+import DetailToolbar from "../Component/Toolbar/DetailToolbar";
 import UserSelect from "../Component/User/UserSelect";
-
-import ItemProvider from "../Provider/ItemProvider";
-import UserProvider from "../Provider/UserProvider";
-import ListProvider from "../Provider/ListProvider";
+import { ListContext } from "../Provider/ListProvider";
+import { useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
 
 function Detail() {
+  const { setListId } = useContext(ListContext);
+  const { id } = useParams();
+
+  useEffect(() => {
+    setListId(Number(id));
+  });
+
   return (
     <div>
-      <UserProvider>
-        <header>
-          <section>
-            <div>LOGO</div>
-            <UserSelect />
-          </section>
-        </header>
-        <main>
-          <ListProvider>
-            <ItemProvider>
-              <section>
-                <ListToolbar />
-              </section>
-              <section>
-                <UserList />
-              </section>
-              <section>
-                <ItemList />
-              </section>
-            </ItemProvider>
-          </ListProvider>
-        </main>
-        <footer></footer>
-      </UserProvider>
+      <header>
+        <section>
+          <div>LOGO</div>
+          <UserSelect />
+        </section>
+      </header>
+      <main>
+        <section>
+          <DetailToolbar />
+        </section>
+        <section>
+          <UserList />
+        </section>
+        <section>
+          <ItemList />
+        </section>
+      </main>
+      <footer></footer>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { ListContext } from "../../Provider/ListProvider";
 import { UserContext } from "../../Provider/UserProvider";
 
 function UserList() {
-  const { filteredUsers, handlerMap } = useContext(ListContext);
+  const { userDataFiltered, handlerMap, listId } = useContext(ListContext);
   const { loggedInUser } = useContext(UserContext);
 
   return (
@@ -14,14 +14,14 @@ function UserList() {
         <div>
           <button
             className="leaveListButton"
-            onClick={(e) => handlerMap.handleLeave(1, loggedInUser)}
+            onClick={(e) => handlerMap.handleLeave(listId, loggedInUser)}
           >
             Leave
           </button>
         </div>
       </div>
       <div>
-        {filteredUsers.map((user) => (
+        {userDataFiltered.map((user) => (
           <UserCard key={user.id} user={user} />
         ))}
       </div>

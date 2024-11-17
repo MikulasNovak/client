@@ -2,18 +2,18 @@ import React, { useState, useContext } from "react";
 import "../../App.css";
 import Modal from "../../Modal";
 import { ListContext } from "../../Provider/ListProvider";
-import { UserContext } from "../../Provider/UserProvider"; 
+import { UserContext } from "../../Provider/UserProvider";
 
 function AddMemberModal({ isModalOpen, closeModal }) {
-  const { handlerMap } = useContext(ListContext);
-  const { userData } = useContext(UserContext); 
-  const [selectedUserId, setSelectedUserId] = useState(""); 
+  const { handlerMap, listId } = useContext(ListContext);
+  const { userData } = useContext(UserContext);
+  const [selectedUserId, setSelectedUserId] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
-    handlerMap.handleAddMember(1, Number(selectedUserId));
-    setSelectedUserId(""); 
+
+    handlerMap.handleAddMember(listId, Number(selectedUserId));
+    setSelectedUserId("");
     closeModal();
   };
 

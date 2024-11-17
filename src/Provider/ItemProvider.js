@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import { ListContext } from "./ListProvider";
+import { useParams } from "react-router-dom";
 
 // Initial item data
 let itemData = [
@@ -9,24 +10,19 @@ let itemData = [
   { id: 4, list_id: 3, title: "Four", resolved: false },
 ];
 
-
-
 export const ItemContext = createContext();
 
 function ItemProvider({ children }) {
   const { listData, listId } = useContext(ListContext);
   const [data, setData] = useState(itemData);
   const [filterOption, setFilterOption] = useState("all");
-
-  let urlArray = window.location.pathname.split('/');
-  let currentListId = Number(urlArray[2]); //MAYBE USE STATE ?
+  const { id } = useParams();
 
   useEffect(() => {
-    handleLoad(currentListId, filterOption);
-  }, [listData, filterOption]);
+    handleLoad(listId, filterOption);
+  }, [listId, listData, filterOption]);
 
   function handleLoad(list_id, option) {
-    //Issues after marking item as resolved
     const items = itemData.filter((item) => item.list_id === list_id);
 
     const filteredItems = items.filter((item) => {
@@ -44,8 +40,8 @@ function ItemProvider({ children }) {
 
   function handleCreate(title) {
     const newItem = {
-      id: Math.random().toString(),
-      list_id: currentListId, //CHANGABLE
+      id: Number(Math.random().toString()),
+      list_id: id,
       title: title,
       resolved: false,
     };

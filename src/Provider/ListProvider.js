@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { UserContext } from "./UserProvider";
+
 let listData = [
   {
     id: 1,
@@ -15,6 +16,13 @@ let listData = [
     archived: false,
     memberList: [3],
   },
+  {
+    id: 3,
+    owner_id: 1,
+    title: "Three",
+    archived: true,
+    memberList: [3, 2],
+  },
 ];
 
 export const ListContext = createContext();
@@ -22,48 +30,54 @@ export const ListContext = createContext();
 function ListProvider({ children }) {
   const [originalData, setOriginalData] = useState(listData);
   const [filteredData, setFilteredData] = useState(listData);
+  const [filterOption, setFilterOption] = useState("all"); // New filter state
+  const [listId, setListId] = useState();
   const [filteredUsers, setFilteredUsers] = useState([]); // New state to hold filtered members
-
   const { userData, loggedInUser } = useContext(UserContext);
 
-  let urlArray = window.location.pathname.split('/');
-  let currentListId = Number(urlArray[2]); //MAYBE USE STATE ?
+  useEffect(() => {
+    handleUserLoad(listId);
+  }, [listId, originalData]);
 
   useEffect(() => {
-    handleUserLoad(currentListId); //CHANGABLE PROP
-  }, [originalData]);
-
-  useEffect(() => {
-    handleLoad(loggedInUser); //CHANGABLE PROP
-  }, [originalData, loggedInUser]);
+    handleLoad(loggedInUser, originalData, filterOption);
+  }, [listId, loggedInUser, filterOption]);
 
   function handleUserLoad(list_id) {
     const list = originalData.find((list) => list.id === list_id);
+
     if (!list) {
       console.warn(`List with id ${list_id} not found.`);
       return;
     }
+
     const filteredUsers = userData.filter((user) =>
       list.memberList.includes(user.id)
     );
+
     const owner = userData.find((user) => user.id === list.owner_id);
     if (owner && !filteredUsers.some((user) => user.id === owner.id)) {
       filteredUsers.push(owner);
     }
-    setFilteredUsers(filteredUsers);
+    //console.log(filteredUsers);
+    setFilteredUsers(filteredUsers); // Update the state
   }
 
-  function handleLoad(user_id) {
-    const filteredData = listData.filter(
+  function handleLoad(user_id, data, option) {
+    const lists = data.filter(
       (list) => list.owner_id === user_id || list.memberList.includes(user_id)
     );
-    setFilteredData(filteredData); // Update state 
+    //console.log(filterOption);
+    const filteredLists = lists.filter((list) => {
+      if (option === "archived") return list.archived;
+      if (option === "unarchived") return !list.archived;
+      return true;
+    });
+
+    setFilteredData(filteredLists); // Update state
   }
 
   function handleKick(list_id, user_id) {
-    console.log("Attempting to kick user:", user_id, "from list:", list_id);
-    console.log("Logged In User:", loggedInUser);
-
     setOriginalData((current) =>
       current.map((list) => {
         if (list.id === list_id) {
@@ -131,19 +145,33 @@ function ListProvider({ children }) {
   }
   function handleCreate(title) {
     const newList = {
-      id: Math.random().toString(),
+      id: Number(Math.random()),
       owner_id: loggedInUser,
       title: title,
       archived: false,
-      memberList: []
+      memberList: [],
     };
 
-    setOriginalData((current) => [...current, newList]);
-    console.log(originalData);
+    setOriginalData((current) => {
+      const updatedData = [...current, newList];
+      handleLoad(loggedInUser, updatedData);
+      return updatedData;
+    });
+  }
+
+  function handleDelete(list_id) {
+    const list = originalData.find((list) => list.id === list_id);
+    if (list.owner_id === loggedInUser) {
+      setFilteredData((current) =>
+        current.filter((list) => list.id !== list_id)
+      );
+    } else {
+      console.log("User is not owner of the list");
+    }
   }
 
   function handleArchive(list_id) {
-    setOriginalData((current) =>
+    setFilteredData((current) =>
       current.map((list) =>
         list.id === list_id ? { ...list, archived: !list.archived } : list
       )
@@ -153,9 +181,11 @@ function ListProvider({ children }) {
   const value = {
     listData: originalData || [],
     listDataFiltered: filteredData,
-    setOriginalData,
-    currentListId,
-    filteredUsers, // Expose filteredUsers to other components
+    userDataFiltered: filteredUsers,
+    setListId,
+    listId,
+    setFilterOption,
+    filterOption,
     handlerMap: {
       handleArchive,
       handleLoad,
@@ -163,6 +193,7 @@ function ListProvider({ children }) {
       handleLeave,
       handleKick,
       handleCreate,
+      handleDelete,
       handleEditListName,
     },
   };

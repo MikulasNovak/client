@@ -45,6 +45,11 @@ header>section>div:nth-child(2) {
   margin-right: 5%;
 }
 
+.deleteListButton {
+  background-color: #CC2A17;
+  color: white;
+}
+
 
 
 
@@ -188,6 +193,17 @@ header>section>div:nth-child(2) {
   height: 10vh;
 }
 
+.listCard>div:nth-child(1) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 5%;
+}
+
+.listCard>div:nth-child(1)>i {
+  font-size: larger;
+}
+
 
 
 /*-----*/
@@ -262,7 +278,7 @@ header>section>div:nth-child(2) {
 
 /*--LIST LIST--*/
 
-.listList {}
+
 
 /*-----*/
 
@@ -319,9 +335,7 @@ header>section>div:nth-child(2) {
 }
 
 .listToolbar>div:nth-child(2) {
-
   margin-left: 5%;
-
 }
 
 
@@ -347,11 +361,6 @@ header>section>div:nth-child(2) {
 
   .fa-ellipsis {
     display: none;
-  }
-
-  .deleteListButton {
-    background-color: #CC2A17;
-    color: white;
   }
 
   .listToolbarButtons {
@@ -406,4 +415,25 @@ header>section>div:nth-child(2) {
     grid-gap: 1vw;
   }
 
+  .listList {
+    margin: 0 auto;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2vw;
+  }
+
+  .listCard {
+    width: 100%;
+    padding: 5% 0 5% 0;
+  }
+
+  .listCard>div:nth-child(1) {
+    margin-left: 5%;
+  }
+
+  .listCard>div:nth-child(2) {
+    margin-left: 5%;
+  }
 }
