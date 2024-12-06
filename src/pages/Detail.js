@@ -2,7 +2,6 @@ import "./../App.css";
 import ItemList from "../containers/item/ItemList";
 import UserList from "../containers/user/UserList";
 import DetailToolbar from "../containers/toolbars/DetailToolbar";
-import UserSelect from "../containers/user/UserSelect";
 import { ListContext } from "../providers/ListProvider";
 import { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";

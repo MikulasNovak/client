@@ -18,35 +18,30 @@ function AddMemberModal({ isModalOpen, closeModal }) {
   };
 
   return (
-    <Modal isOpen={isModalOpen} closeModal={closeModal} title="Add Member">
-      <form onSubmit={handleSubmit} className="itemForm">
-        <div>
-          <select
-            id="userSelect"
-            name="userSelect"
-            value={selectedUserId}
-            onChange={(e) => setSelectedUserId(e.target.value)}
-            required
-          >
-            <option value="" disabled>
-              Select a user
+    <Modal
+      isOpen={isModalOpen}
+      closeModal={closeModal}
+      title="Add Member"
+      handleSubmit={handleSubmit}
+    >
+      <div>
+        <select
+          id="userSelect"
+          name="userSelect"
+          value={selectedUserId}
+          onChange={(e) => setSelectedUserId(e.target.value)}
+          required
+        >
+          <option value="" disabled>
+            Select a user
+          </option>
+          {userData.map((user) => (
+            <option key={user.id} value={user.id}>
+              {user.username}
             </option>
-            {userData.map((user) => (
-              <option key={user.id} value={user.id}>
-                {user.username}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="modalFormButtons">
-          <button type="button" onClick={closeModal}>
-            Close
-          </button>
-          <button type="submit" variant="primary">
-            Add Member
-          </button>
-        </div>
-      </form>
+          ))}
+        </select>
+      </div>
     </Modal>
   );
 }

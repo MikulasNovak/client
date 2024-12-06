@@ -13,18 +13,12 @@ function ListDeleteModal({ isModalOpen, closeModal, values }) {
   };
 
   return (
-    <Modal isOpen={isModalOpen} closeModal={closeModal} title="Create list">
-      <form onSubmit={handleSubmit} className="itemForm">
-        <div className="modalFormButtons">
-          <button type="button" onClick={closeModal}>
-            Close
-          </button>
-          <button type="submit" variant="primary">
-            Delete
-          </button>
-        </div>
-      </form>
-    </Modal>
+    <Modal
+      isOpen={isModalOpen}
+      closeModal={closeModal}
+      title="Delete list"
+      handleSubmit={handleSubmit}
+    ></Modal>
   );
 }
 

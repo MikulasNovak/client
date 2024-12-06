@@ -15,28 +15,25 @@ function ItemUpdateModal({ isModalOpen, closeModal, values }) {
   };
 
   return (
-    <Modal isOpen={isModalOpen} closeModal={closeModal} title="Update item">
-      <form onSubmit={handleSubmit} className="itemForm">
-        <div>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            placeholder="Title"
-            defaultValue={values.title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
-        <div className="modalFormButtons">
-          <button type="button" onClick={closeModal}>
-            Close
-          </button>
-          <button type="submit" variant="primary">
-            Save
-          </button>
-        </div>
-      </form>
+    <Modal
+      isOpen={isModalOpen}
+      closeModal={closeModal}
+      title="Update item"
+      className="updateItemModal"
+      handleSubmit={handleSubmit}
+    >
+      <div>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          className="modalInput"
+          placeholder="Title"
+          defaultValue={values.title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+      </div>
     </Modal>
   );
 }

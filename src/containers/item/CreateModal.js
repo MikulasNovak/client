@@ -15,28 +15,25 @@ function ItemCreateModal({ isModalOpen, closeModal }) {
   };
 
   return (
-    <Modal isOpen={isModalOpen} closeModal={closeModal} title="Create item">
-      <form onSubmit={handleSubmit} className="itemForm">
-        <div>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
-        <div className="modalFormButtons">
-          <button type="button" onClick={closeModal}>
-            Close
-          </button>
-          <button type="submit" variant="primary">
-            Save
-          </button>
-        </div>
-      </form>
+    <Modal
+      isOpen={isModalOpen}
+      closeModal={closeModal}
+      title="Create item"
+      className="createItemModal"
+      handleSubmit={handleSubmit}
+    >
+      <div>
+        <input
+          className="modalInput"
+          type="text"
+          id="title"
+          name="title"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+      </div>
     </Modal>
   );
 }
