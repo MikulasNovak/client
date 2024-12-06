@@ -1,0 +1,178 @@
+:root {
+    --white: white;
+
+    --green: #0D6943;
+    --red: #CC2A17;
+    --blue: #006DD6;
+    --orange: #E67C0E;
+
+    --dark-background: #121212;
+    --dark-container: #282828;
+    --dark-component: #3F3F3F;
+
+    --text-darkTheme: #8C8061;
+    --text-whiteTheme: #5B5B5B;
+}
+
+@font-face {
+    font-family: 'InterRegular';
+    src: url('../fonts/Inter_18pt-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'InterSemibold';
+    src: url('../fonts/Inter_18pt-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'InterLight';
+    src: url('../fonts/Inter_18pt-Light.ttf');
+}
+
+* {
+    font-family: 'InterRegular', sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+i {
+    color: var(--text-whiteTheme);
+}
+
+h3 {
+    color: var(--text-whiteTheme);
+}
+
+h2 {
+    color: var(--text-whiteTheme);
+}
+
+label {
+    color: var(--text-whiteTheme);
+}
+
+select {
+    color: var(--text-whiteTheme);
+}
+
+.fa-x {
+    transform: scale(1.2, 1);
+    color: var(--red);
+}
+
+.fa-pen-to-square {
+    color: var(--orange);
+}
+
+
+/*---HIDDEN PROP---*/
+
+.hidden {
+    display: none;
+}
+
+/*-------------*/
+
+/*---HEADER---*/
+.navbarContainer {
+    background-color: #3D3028;
+    color: var(--text-whiteTheme);
+    height: 5vh;
+    display: flex;
+    align-items: center;
+}
+
+.navbar {
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*-------------*/
+
+
+/*---CARD---*/
+
+.card {
+    border-radius: 10px;
+    background-color: var(--white);
+    color: var(--text-whiteTheme);
+    -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+/*-------------*/
+
+
+/*---BUTTON---*/
+.button {
+    border-radius: 10px;
+    border: none;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    background-color: var(--white);
+    color: var(--text-whiteTheme);
+    font-size: 0.8rem;
+    font-weight: 500;
+    -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+/*-------------*/
+
+
+
+/*---MODAL---*/
+
+.modalOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.modal {
+    width: 80%;
+    padding: 5%;
+    background-color: var(--white);
+    border-radius: 1rem;
+}
+
+.modal>div:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modalFormButtons {
+    margin-top: 2vh;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+/*-------------*/
+
+
+@media screen and (min-width: 800px) {
+
+    /*---HIDDEN UNSET---*/
+
+    .hidden {
+        display: unset;
+    }
+
+    /*-------------*/
+}

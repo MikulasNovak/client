@@ -1,10 +1,11 @@
 import "./App.css";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import Detail from "./Page/Detail";
-import List from "./Page/List";
-import UserProvider from "./Provider/UserProvider";
-import ListProvider from "./Provider/ListProvider";
-import ItemProvider from "./Provider/ItemProvider";
+import Detail from "./pages/Detail";
+import List from "./pages/Home";
+import UserProvider from "./providers/UserProvider";
+import ListProvider from "./providers/ListProvider";
+import ItemProvider from "./providers/ItemProvider";
+import Layout from "./layout/Layout";
 
 function App() {
   return (
@@ -13,10 +14,12 @@ function App() {
         <UserProvider>
           <ListProvider>
             <ItemProvider>
-              <Routes>
-                <Route path="/" element={<List />} />
-                <Route path="/list/:id" element={<Detail />} />
-              </Routes>
+              <Layout>
+                <Routes>
+                  <Route path="/" element={<List />} />
+                  <Route path="/list/:id" element={<Detail />} />
+                </Routes>
+              </Layout>
             </ItemProvider>
           </ListProvider>
         </UserProvider>

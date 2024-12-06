@@ -1,0 +1,75 @@
+/*---DETAIL TOOLBAR---*/
+
+.detailToolbar {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.detailToolbar i {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.detailToolbar>div {
+    align-items: center;
+}
+
+.detailToolbar>div:nth-child(1) {
+    display: flex;
+    grid-gap: 3vw;
+}
+
+.detailToolbar>div:nth-child(2) {
+    display: flex;
+    gap: 3vw;
+}
+
+.detailToolbarAddItem {
+    background-color: var(--green);
+    color: var(--white);
+}
+
+/*-------------*/
+
+
+/*---LIST TOOLBAR---*/
+
+.homeToolbar>div:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.homeToolbarFilter {
+    margin-left: 5%;
+}
+
+.homeToolbarAddList {
+    background-color: var(--green);
+    color: var(--white);
+}
+
+/*-------------*/
+@media screen and (min-width: 800px) {
+
+    .fa-ellipsis {
+        display: none;
+    }
+
+    /*---DETAIL TOOLBAR---*/
+    .detailToolbarButtons {
+        display: flex;
+        gap: 1vw;
+    }
+
+    .detailToolbarDeleteList {
+        background-color: var(--red);
+        color: white;
+    }
+
+    /*-------------*/
+}

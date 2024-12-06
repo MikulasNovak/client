@@ -1,0 +1,60 @@
+.listCard {
+    margin: 0 auto;
+    margin-top: 5%;
+    padding: 5%;
+    width: 80%;
+    height: fit-content;
+
+}
+
+.listCardDeleteList {
+    background-color: var(--red);
+    color: var(--white);
+    margin-top: 2vh;
+}
+
+.listCard>div:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.listCard>div:nth-child(1)>i {
+    font-size: larger;
+}
+
+
+@media screen and (min-width: 800px) {
+    .listCardProgress {
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .listList {
+        margin: 0 auto;
+        margin-left: 5%;
+        margin-right: 5%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2vw;
+    }
+
+    .listCard {
+        width: 100%;
+        padding: 5% 0 5% 0;
+    }
+
+    .listCard>div:nth-child(1) {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .listCard>div:nth-child(2) {
+        margin-left: 5%;
+    }
+
+    .listCardDeleteList {
+        margin-left: 5%;
+    }
+
+}
