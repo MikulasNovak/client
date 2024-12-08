@@ -29,6 +29,7 @@ function AddMemberModal({ isModalOpen, closeModal }) {
           id="userSelect"
           name="userSelect"
           value={selectedUserId}
+          className="modalInput"
           onChange={(e) => setSelectedUserId(e.target.value)}
           required
         >

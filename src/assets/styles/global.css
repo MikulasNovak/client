@@ -88,7 +88,7 @@ input {
 .navbarContainer {
     background-color: #3D3028;
     color: var(--text-whiteTheme);
-    height: 5vh;
+    height: 6vh;
     display: flex;
     align-items: center;
 }
@@ -99,6 +99,21 @@ input {
     margin: 0 auto;
     justify-content: space-between;
     align-items: center;
+}
+
+.navbarLogoContainer {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 100%;
+}
+
+.navbarLogoContainer>img {
+    max-height: 80%;
+    max-width: 60px;
+    object-fit: contain;
 }
 
 /*-------------*/
@@ -140,7 +155,7 @@ input {
 /*---MODAL---*/
 
 .modalOverlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -149,43 +164,59 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1;
+    z-index: 9999;
+    overflow: hidden;
 }
 
-.modal {
-    width: 50%;
-    padding: 5rem;
+.modalContainer {
+    width: 70%;
+    padding: 2rem 3rem 2rem 3rem;
     background-color: var(--white);
     border-radius: 10px;
 }
 
-.modal>div:nth-child(1) {
+.modalHeader {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-}
-
-.modalButtons {
-    margin-top: 2vh;
-    display: flex;
-    justify-content: flex-end;
-    gap: 1vw;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .modalTitle {
-    font-size: 1.5rem;
+    margin-top: 5%;
+    padding: 0;
+}
+
+.modalForm {
+    width: 100%;
 }
 
 .modalInput {
-    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
     border: none;
     padding: 0.5rem 2rem 0.5rem 1rem;
-    width: 95%;
     -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
+.modalButtons {
+    margin-top: 5%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.modalSave {
+    background-color: var(--green);
+    color: var(--white);
+}
+
+.modalClose {
+    background-color: var(--red);
+    color: var(--white);
+}
 
 
 /*-------------*/
@@ -194,6 +225,9 @@ input {
 @media screen and (min-width: 800px) {
 
     /*---HIDDEN UNSET---*/
+    .modalContainer {
+        width: 50%;
+    }
 
     .hidden {
         display: unset;

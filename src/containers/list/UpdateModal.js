@@ -27,7 +27,7 @@ function ItemCreateModal({ isModalOpen, closeModal, values }) {
           id="title"
           name="title"
           placeholder="Title"
-          value={title}
+          value={values.title}
           className="modalInput"
           onChange={(e) => setTitle(e.target.value)}
         />

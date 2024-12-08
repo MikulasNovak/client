@@ -28,6 +28,7 @@ function ItemCreateModal({ isModalOpen, closeModal }) {
           name="title"
           placeholder="Title"
           value={title}
+          className="modalInput"
           onChange={(e) => setTitle(e.target.value)}
           required
         />

@@ -18,12 +18,12 @@
 
 .detailToolbar>div:nth-child(1) {
     display: flex;
-    grid-gap: 3vw;
+    grid-gap: 1vw;
 }
 
 .detailToolbar>div:nth-child(2) {
     display: flex;
-    gap: 3vw;
+    gap: 1vw;
 }
 
 .detailToolbarAddItem {
