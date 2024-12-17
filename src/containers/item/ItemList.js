@@ -1,48 +1,32 @@
 import ItemCard from "./ItemCard";
+import RadioFilter from "../../components/filter/RadioFilter";
 import "../../assets/styles/item.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ItemContext } from "../../providers/ItemProvider";
 
 function ItemList() {
   const { itemData, setFilterOption } = useContext(ItemContext);
+  const [selectedFilter, setSelectedFilter] = useState("all");
+
   function handleFilterChange(event) {
     setFilterOption(event.target.value); // This triggers handleLoad in the provider
   }
+  const radioButtons = [
+    { label: "All", value: "all" },
+    { label: "Resolved", value: "resolved" },
+    { label: "Unresolved", value: "Unresolved" },
+  ];
 
   return (
     <div className="itemList">
       <div>
         <h2>Items</h2>
-        <div>
-          <label>
-            <input
-              type="radio"
-              name="filterItem"
-              value="all"
-              defaultChecked
-              onChange={handleFilterChange}
-            />
-            All
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="filterItem"
-              value="resolved"
-              onChange={handleFilterChange}
-            />
-            Resolved
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="filterItem"
-              value="unresolved"
-              onChange={handleFilterChange}
-            />
-            Unresolved
-          </label>
-        </div>
+        <RadioFilter
+          className="listItemFilter"
+          buttons={radioButtons}
+          handleFilterChange={handleFilterChange}
+          defaultCheckedValue={selectedFilter}
+        />
       </div>
       <div>
         {itemData.map((item) => (

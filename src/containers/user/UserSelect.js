@@ -1,6 +1,7 @@
 // CategoryList.js
 import React, { useContext, useState } from "react";
 import { UserContext } from "../../providers/UserProvider";
+import "../../assets/styles/user.css";
 
 function UserSelect() {
   const { userData, setLoggedInUser } = useContext(UserContext);

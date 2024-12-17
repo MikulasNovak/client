@@ -1,6 +1,14 @@
 import "../../assets/styles/global.css";
 import Button from "../button/Button";
-function Modal({ isOpen, closeModal, children, title, handleSubmit }) {
+
+function Modal({
+  isOpen,
+  closeModal,
+  children,
+  title,
+  handleSubmit,
+  isLoading,
+}) {
   return (
     <>
       {isOpen && (
@@ -15,13 +23,15 @@ function Modal({ isOpen, closeModal, children, title, handleSubmit }) {
               <div className="modalButtons">
                 <Button
                   type="submit"
-                  buttonText={"Save"}
+                  buttonText={isLoading ? "Saving..." : "Save"}
                   className="modalSave"
+                  disabled={isLoading} // Disable button when loading
                 />
                 <Button
                   onClick={closeModal}
                   buttonText={"Close"}
                   className="modalClose"
+                  disabled={isLoading} // Optionally disable Close when saving
                 />
               </div>
             </form>

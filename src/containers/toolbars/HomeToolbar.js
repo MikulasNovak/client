@@ -3,9 +3,11 @@ import "../../assets/styles/toolbar.css";
 import { ListContext } from "../../providers/ListProvider";
 import ListCreateModal from "../list/CreateModal";
 import Button from "../../components/button/Button";
+import RadioFilter from "../../components/filter/RadioFilter";
 
 function ListToolbar() {
   const { setFilterOption } = useContext(ListContext);
+  const [selectedFilter, setSelectedFilter] = useState("all");
 
   function handleFilterChange(event) {
     setFilterOption(event.target.value); // This triggers handleLoad in the provider
@@ -17,6 +19,12 @@ function ListToolbar() {
     [setIsModalListCreateOpen]
   );
 
+  const radioButtons = [
+    { label: "All", value: "all" },
+    { label: "Archived", value: "archived" },
+    { label: "Unarchived", value: "unarchived" },
+  ];
+
   return (
     <div className="homeToolbar">
       <div>
@@ -27,36 +35,12 @@ function ListToolbar() {
           buttonText={"Add list"}
         />
       </div>
-      <div className="homeToolbarFilter">
-        <label>
-          <input
-            type="radio"
-            name="filterList"
-            value="all"
-            defaultChecked
-            onChange={handleFilterChange}
-          />
-          All
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="filterList"
-            value="archived"
-            onChange={handleFilterChange}
-          />
-          Archived
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="filterList"
-            value="unarchived"
-            onChange={handleFilterChange}
-          />
-          Unarchived
-        </label>
-      </div>
+      <RadioFilter
+        className="homeToolbarFilter"
+        buttons={radioButtons}
+        handleFilterChange={handleFilterChange}
+        defaultCheckedValue={selectedFilter}
+      />
 
       <ListCreateModal
         closeModal={closeModalListCreate}
