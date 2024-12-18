@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../../assets/styles/filter.css";
+import "../../assets/styles/global.css";
 
 function RadioFilter({
   className = "",
