@@ -89,7 +89,6 @@ select {
 }
 
 .fa-square-check {
-
     cursor: pointer;
 }
 
@@ -124,7 +123,7 @@ select {
 .navbar>div:nth-child(2) {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .navbar select {
@@ -288,7 +287,7 @@ button:disabled {
 
 .ui-switch {
     /* switch */
-    --switch-bg: #948F8F;
+    --switch-bg: var(--text-white);
     --switch-width: 48px;
     --switch-height: 20px;
     /* circle */

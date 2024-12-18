@@ -11,10 +11,10 @@ function ThemeToggle() {
   };
 
   return (
-    <label class="ui-switch">
+    <label className="ui-switch">
       <input type="checkbox" checked={darkMode} onChange={toggleTheme} />
-      <div class="slider">
-        <div class="circle"></div>
+      <div className="slider">
+        <div className="circle"></div>
       </div>
     </label>
   );

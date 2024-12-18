@@ -29,9 +29,11 @@ function ItemList() {
         />
       </div>
       <div>
-        {itemData.map((item) => (
-          <ItemCard key={item.id} item={item} />
-        ))}
+        {itemData.length > 0 ? (
+          itemData.map((item) => <ItemCard key={item.id} item={item} />)
+        ) : (
+          <p className="noItemsText">No items available.</p>
+        )}
       </div>
     </div>
   );

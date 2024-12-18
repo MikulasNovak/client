@@ -5,7 +5,7 @@ import DetailToolbar from "../containers/toolbars/DetailToolbar";
 import { ListContext } from "../providers/ListProvider";
 import { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-
+import Chart from "../containers/chart/Chart";
 function Detail() {
   const { setListId } = useContext(ListContext);
   const { id } = useParams();
@@ -37,6 +37,9 @@ function Detail() {
       </section>
       <section>
         <ItemList />
+      </section>
+      <section>
+        <Chart />
       </section>
     </div>
   );

@@ -32,7 +32,6 @@ function ListCard({ list }) {
       archivedColor = "#5B5B5B";
       break;
   }
-  console.log(getProgress(list.id));
   return (
     <Card className="listCard" onClick={() => navigate("list/" + list.id)}>
       <div>

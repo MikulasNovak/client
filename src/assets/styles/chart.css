@@ -1,0 +1,16 @@
+.chartContainer {
+    margin: 0 auto;
+    margin-top: 3vh;
+    border-radius: 10px;
+    background-color: var(--container);
+    -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 1rem 0 1rem 0;
+    width: 90%;
+    margin-bottom: 5vh;
+}
+
+.chartTitle {
+    margin-left: 6%;
+}
