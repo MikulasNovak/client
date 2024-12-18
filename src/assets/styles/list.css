@@ -5,12 +5,13 @@
     width: 80%;
     height: fit-content;
     cursor: pointer;
+    background-color: var(--container);
 
 }
 
 .listCardDeleteList {
     background-color: var(--red);
-    color: var(--white);
+    color: var(--text-white);
     margin-top: 2vh;
 }
 

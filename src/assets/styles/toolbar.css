@@ -28,7 +28,7 @@
 
 .detailToolbarAddItem {
     background-color: var(--green);
-    color: var(--white);
+    color: var(--text-white);
 }
 
 
@@ -51,7 +51,7 @@
 
 .homeToolbarAddList {
     background-color: var(--green);
-    color: var(--white);
+    color: var(--text-white);
 }
 
 /*-------------*/
@@ -74,15 +74,3 @@
 
     /*-------------*/
 }
-
-
-
-
-
-
-
-
-
-
-
-

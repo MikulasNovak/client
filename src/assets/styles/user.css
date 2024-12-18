@@ -4,9 +4,8 @@
     margin-top: 2vh;
     width: 100%;
     justify-content: space-between;
-
     border-radius: 10px;
-    background-color: var(--white);
+    background-color: var(--component);
     -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
@@ -48,7 +47,7 @@
 .userList {
     margin: 0 auto;
     border-radius: 10px;
-    background-color: var(--white);
+    background-color: var(--container);
     -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
@@ -58,7 +57,7 @@
 
 .userListLeaveList {
     background-color: var(--red);
-    color: var(--white);
+    color: var(--text-white);
 }
 
 .userListTitle {

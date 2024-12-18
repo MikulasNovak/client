@@ -1,7 +1,8 @@
 import UserSelect from "../../containers/user/UserSelect";
 import "../../assets/styles/global.css";
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/images/shopie-logo.png"; 
+import logo from "../../assets/images/shopie-logo.png";
+import ThemeToggle from "../toggles/ThemeToggle";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -11,7 +12,10 @@ function Navbar() {
         <div onClick={() => navigate("/")} className="navbarLogoContainer">
           <img src={logo} alt="Logo" />
         </div>
-        <UserSelect />
+        <div>
+          <ThemeToggle />
+          <UserSelect />
+        </div>
       </div>
     </div>
   );
