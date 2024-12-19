@@ -23,7 +23,7 @@
 
 .detailToolbar>div:nth-child(2) {
     display: flex;
-    gap: 1vw;
+    gap: 2vw;
 }
 
 .detailToolbarAddItem {

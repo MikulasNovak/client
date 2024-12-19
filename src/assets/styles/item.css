@@ -41,13 +41,6 @@
     font-weight: 600;
 }
 
-.noItemsText {
-    display: flex;
-    justify-content: center;
-    font-size: larger;
-    color: var(--text);
-    font-family: 'InterLight';
-}
 
 @media screen and (min-width: 800px) {
 

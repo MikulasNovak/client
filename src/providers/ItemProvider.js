@@ -16,7 +16,9 @@ function ItemProvider({ children }) {
   const { listData, listId } = useContext(ListContext);
   const [data, setData] = useState(itemData);
   const [filterOption, setFilterOption] = useState("all");
+
   const { id } = useParams();
+
 
   useEffect(() => {
     handleLoad(listId, filterOption);

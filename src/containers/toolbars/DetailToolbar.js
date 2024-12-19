@@ -77,7 +77,7 @@ function DetailToolbar() {
           />
           <Button
             className="detailToolbarDeleteList hidden"
-            buttonText={"Delete button"}
+            buttonText={"Delete"}
           />
           <Button
             className="detailToolbarAddItem"
