@@ -2,15 +2,18 @@ import React, { useState, useCallback, useContext } from "react";
 import ItemCreateModal from "../item/CreateModal";
 import AddMemberModal from "../list/AddMemberModal";
 import "../../assets/styles/toolbar.css";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
 import { ListContext } from "../../providers/ListProvider";
 import { useNavigate, useParams } from "react-router-dom";
 import Button from "../../components/button/Button";
 import UpdateLisModal from "../list/UpdateModal";
 
 function DetailToolbar() {
-  const { handlerMap, listData } = useContext(ListContext);
+  const { listData } = useContext(ListContext);
   const navigate = useNavigate();
   const { id } = useParams();
+
+  const { t } = useTranslation();
 
   const [isModalItemCreateOpen, setIsModalItemCreateOpen] = useState(false);
   const closeModalItemCreate = useCallback(
@@ -32,28 +35,11 @@ function DetailToolbar() {
 
   const currentList = listData.find((list) => list.id === Number(id));
 
-  let archivedColor;
-  let color;
-  switch (true) {
-    case currentList.archived:
-      archivedColor = "#006DD6";
-      color = "#FFFFFF";
-      break;
-    case !currentList.archived:
-      archivedColor = "#FFFFFF";
-      color = "#000000";
-      break;
-    default:
-      archivedColor = "#FFFFFF";
-      color = "#000000";
-      break;
-  }
-
   return (
     <div className="detailToolbar">
       <div>
         <i className="fa-solid fa-arrow-left" onClick={() => navigate("/")}></i>
-        <h2 style={{ display: "inline" }}>{currentList.title}</h2>
+        <h2>{currentList.title}</h2>
         <i
           className="fa-solid fa-pen-to-square"
           onClick={() => setModalUpdateListOpen(true)}
@@ -66,23 +52,21 @@ function DetailToolbar() {
         <div className="detailToolbarButtons">
           <Button
             className="detailToolbarArchiveList hidden"
-            onClick={(e) => handlerMap.handleArchive(currentList.id)}
-            style={{ backgroundColor: archivedColor, color: color }}
-            buttonText={"Archive list"}
+            buttonText={t(`buttons.archiveList`)}
           />
           <Button
             className="detailToolbarAddMember hidden"
             onClick={() => setIsModalAddMemberOpen(true)}
-            buttonText={"Add member"}
+            buttonText={t(`buttons.addMember`)}
           />
           <Button
             className="detailToolbarDeleteList hidden"
-            buttonText={"Delete"}
+            buttonText={t(`buttons.deleteList`)}
           />
           <Button
             className="detailToolbarAddItem"
             onClick={() => setIsModalItemCreateOpen(true)}
-            buttonText={"Add item"}
+            buttonText={t(`buttons.addItem`)}
           />
         </div>
       </div>

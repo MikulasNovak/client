@@ -7,12 +7,14 @@ function Button({
   children,
   isLoading = false, // New prop to indicate loading state
   disabled = false, // Option to disable the button
+  style,
 }) {
   return (
     <button
       className={`button ${className}`}
       onClick={onClick}
-      disabled={isLoading || disabled} // Disable the button when loading or explicitly disabled
+      disabled={isLoading || disabled}
+      style={style}
     >
       {isLoading ? (
         <div className="button-loader">

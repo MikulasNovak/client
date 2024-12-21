@@ -7,10 +7,12 @@ import Card from "../../components/card/Card";
 import Button from "../../components/button/Button";
 import { ItemContext } from "../../providers/ItemProvider";
 import LinearProgress from "@mui/material/LinearProgress";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
 
 function ListCard({ list }) {
   const { handlerMap } = useContext(ListContext);
   const { getProgress } = useContext(ItemContext);
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
 
@@ -65,7 +67,7 @@ function ListCard({ list }) {
             e.stopPropagation();
             setIsModalListDeleteOpen(true);
           }}
-          buttonText={"Delete list"}
+          buttonText={t(`buttons.deleteList`)}
         />
       </div>
 

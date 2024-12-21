@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import "../../App.css";
 import Modal from "../../components/modal/Modal";
 import { ItemContext } from "../../providers/ItemProvider";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
 
 function ItemCreateModal({ isModalOpen, closeModal }) {
   const { handlerMap } = useContext(ItemContext);
@@ -17,12 +18,13 @@ function ItemCreateModal({ isModalOpen, closeModal }) {
       closeModal();
     }, 2000);
   };
+  const { t } = useTranslation();
 
   return (
     <Modal
       isOpen={isModalOpen}
       closeModal={closeModal}
-      title="Create item"
+      title={t("titles.addItemModal")}
       className="createItemModal"
       handleSubmit={handleSubmit}
       isLoading={isLoading}

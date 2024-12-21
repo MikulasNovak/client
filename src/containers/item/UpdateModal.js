@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import "../../App.css";
 import Modal from "../../components/modal/Modal";
 import { ItemContext } from "../../providers/ItemProvider";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
 
 function ItemUpdateModal({ isModalOpen, closeModal, values }) {
   const { handlerMap } = useContext(ItemContext);
@@ -17,12 +18,12 @@ function ItemUpdateModal({ isModalOpen, closeModal, values }) {
       closeModal();
     }, 2000);
   };
-
+  const { t } = useTranslation();
   return (
     <Modal
       isOpen={isModalOpen}
       closeModal={closeModal}
-      title="Update item"
+      title={t("titles.updateItemModal")}
       className="updateItemModal"
       handleSubmit={handleSubmit}
       isLoading={isLoading}

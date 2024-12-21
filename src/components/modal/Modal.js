@@ -1,6 +1,7 @@
 import "../../assets/styles/global.css";
 import Button from "../button/Button";
 import Loader from "../loader/Loader";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
 
 function Modal({
   isOpen,
@@ -10,6 +11,8 @@ function Modal({
   handleSubmit,
   isLoading,
 }) {
+  const { t } = useTranslation(); // Get translation function
+
   return (
     <>
       {isOpen && (
@@ -24,13 +27,13 @@ function Modal({
               <div className="modalButtons">
                 <Button
                   type="submit"
-                  buttonText={isLoading ? <Loader /> : "Save"}
+                  buttonText={isLoading ? <Loader /> : t("buttons.save")} // Use translation for save button
                   className="modalSave"
                   disabled={isLoading}
                 />
                 <Button
                   onClick={closeModal}
-                  buttonText={"Close"}
+                  buttonText={t("buttons.close")} // Use translation for close button
                   className="modalClose"
                   disabled={isLoading} // Optionally disable Close when saving
                 />

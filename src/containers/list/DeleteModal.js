@@ -3,10 +3,12 @@ import "../../App.css";
 import Modal from "../../components/modal/Modal";
 import { ListContext } from "../../providers/ListProvider";
 import { useState } from "react";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
 
 function ListDeleteModal({ isModalOpen, closeModal, values }) {
   const { handlerMap } = useContext(ListContext);
   const [isLoading, setIsLoading] = useState(false);
+  const { t } = useTranslation();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -25,7 +27,7 @@ function ListDeleteModal({ isModalOpen, closeModal, values }) {
     <Modal
       isOpen={isModalOpen}
       closeModal={closeModal}
-      title={`Delete list ${values.title}`}
+      title={t("titles.deleteListModal") + `: ${values.title}`}
       handleSubmit={handleSubmit}
       isLoading={isLoading}
     ></Modal>

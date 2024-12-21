@@ -19,7 +19,6 @@ function ItemProvider({ children }) {
 
   const { id } = useParams();
 
-
   useEffect(() => {
     handleLoad(listId, filterOption);
   }, [listId, listData, filterOption]);
@@ -72,18 +71,12 @@ function ItemProvider({ children }) {
     const progress = Math.round((resolvedCount / items.length) * 100);
     return progress;
   }
-  function getItemCount(list_id) {
-    const items = itemData.filter((item) => item.list_id === list_id);
-    if (!items.length) return 0;
-    return items.length;
-  }
 
   const value = {
     itemData: data || [],
     setFilterOption,
     filterOption,
     getProgress,
-    getItemCount,
     handlerMap: {
       handleDelete,
       handleResolve,

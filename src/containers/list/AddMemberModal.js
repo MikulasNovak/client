@@ -1,8 +1,10 @@
 import React, { useState, useContext } from "react";
 import "../../App.css";
 import Modal from "../../components/modal/Modal";
+import UserSelect from "../user/UserSelect";
 import { ListContext } from "../../providers/ListProvider";
 import { UserContext } from "../../providers/UserProvider";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
 
 function AddMemberModal({ isModalOpen, closeModal }) {
   const { handlerMap, listId } = useContext(ListContext);
@@ -19,12 +21,13 @@ function AddMemberModal({ isModalOpen, closeModal }) {
       closeModal();
     }, 2000);
   };
+  const { t } = useTranslation();
 
   return (
     <Modal
       isOpen={isModalOpen}
       closeModal={closeModal}
-      title="Add Member"
+      title={t("titles.addMemberModal")}
       handleSubmit={handleSubmit}
       isLoading={isLoading}
     >
@@ -38,7 +41,7 @@ function AddMemberModal({ isModalOpen, closeModal }) {
           required
         >
           <option value="" disabled>
-            Select a user
+            {t("select.selectUserDef")}
           </option>
           {userData.map((user) => (
             <option key={user.id} value={user.id}>

@@ -1,11 +1,13 @@
 // CategoryList.js
 import React, { useContext, useState } from "react";
 import { UserContext } from "../../providers/UserProvider";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
 import "../../assets/styles/user.css";
 
 function UserSelect() {
   const { userData, setLoggedInUser } = useContext(UserContext);
   const [selectedUser, setSelectedUser] = useState();
+  const { t, i18n } = useTranslation();
 
   const handleUserChange = (event) => {
     const userId = Number(event.target.value);
@@ -23,7 +25,7 @@ function UserSelect() {
         value={selectedUser || ""}
       >
         <option value="" disabled>
-          Select a user
+          {t(`select.selectUserDef`)}
         </option>
         {userData.map((user) => (
           <option key={user.id} value={user.id}>

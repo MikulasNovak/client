@@ -2,10 +2,12 @@ import React, { useState, useContext } from "react";
 import "../../App.css";
 import Modal from "../../components/modal/Modal";
 import { ListContext } from "../../providers/ListProvider";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
 
 function ItemCreateModal({ isModalOpen, closeModal, values }) {
   const { handlerMap } = useContext(ListContext);
   const [title, setTitle] = useState("");
+  const { t } = useTranslation();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -19,7 +21,7 @@ function ItemCreateModal({ isModalOpen, closeModal, values }) {
       isOpen={isModalOpen}
       closeModal={closeModal}
       handleSubmit={handleSubmit}
-      title="Update list"
+      title={t("titles.updateListModal")}
     >
       <div>
         <input

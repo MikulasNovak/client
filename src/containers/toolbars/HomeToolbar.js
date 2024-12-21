@@ -4,10 +4,12 @@ import { ListContext } from "../../providers/ListProvider";
 import ListCreateModal from "../list/CreateModal";
 import Button from "../../components/button/Button";
 import RadioFilter from "../../components/filter/RadioFilter";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
 
 function ListToolbar() {
   const { setFilterOption } = useContext(ListContext);
   const [selectedFilter, setSelectedFilter] = useState("all");
+  const { t } = useTranslation();
 
   function handleFilterChange(event) {
     setFilterOption(event.target.value); // This triggers handleLoad in the provider
@@ -20,19 +22,19 @@ function ListToolbar() {
   );
 
   const radioButtons = [
-    { label: "All", value: "all" },
-    { label: "Archived", value: "archived" },
-    { label: "Unarchived", value: "unarchived" },
+    { label: t(`filters.all`), value: "all" },
+    { label: t(`filters.archived`), value: "archived" },
+    { label: t(`filters.unarchived`), value: "unarchived" },
   ];
 
   return (
     <div className="homeToolbar">
       <div>
-        <h2>Home</h2>
+        <h2>{t(`titles.homepage`)}</h2>
         <Button
           className="homeToolbarAddList"
           onClick={() => setIsModalListCreateOpen(true)}
-          buttonText={"Add list"}
+          buttonText={t(`buttons.addList`)}
         />
       </div>
       <RadioFilter
