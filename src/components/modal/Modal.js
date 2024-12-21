@@ -1,5 +1,6 @@
 import "../../assets/styles/global.css";
 import Button from "../button/Button";
+import Loader from "../loader/Loader";
 
 function Modal({
   isOpen,
@@ -23,9 +24,9 @@ function Modal({
               <div className="modalButtons">
                 <Button
                   type="submit"
-                  buttonText={isLoading ? "Saving..." : "Save"}
+                  buttonText={isLoading ? <Loader /> : "Save"}
                   className="modalSave"
-                  disabled={isLoading} // Disable button when loading
+                  disabled={isLoading}
                 />
                 <Button
                   onClick={closeModal}

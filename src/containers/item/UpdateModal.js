@@ -6,12 +6,16 @@ import { ItemContext } from "../../providers/ItemProvider";
 function ItemUpdateModal({ isModalOpen, closeModal, values }) {
   const { handlerMap } = useContext(ItemContext);
   const [title, setTitle] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    handlerMap.handleUpdate(values.id, title);
-    setTitle("");
-    closeModal();
+    setIsLoading(true);
+    setTimeout(() => {
+      handlerMap.handleUpdate(values.id, title);
+      setIsLoading(false);
+      closeModal();
+    }, 2000);
   };
 
   return (
@@ -21,6 +25,7 @@ function ItemUpdateModal({ isModalOpen, closeModal, values }) {
       title="Update item"
       className="updateItemModal"
       handleSubmit={handleSubmit}
+      isLoading={isLoading}
     >
       <div>
         <input

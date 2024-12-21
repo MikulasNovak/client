@@ -6,12 +6,16 @@ import { ListContext } from "../../providers/ListProvider";
 function ItemCreateModal({ isModalOpen, closeModal }) {
   const { handlerMap } = useContext(ListContext);
   const [title, setTitle] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    handlerMap.handleCreate(title);
-    setTitle("");
-    closeModal();
+    setIsLoading(true);
+    setTimeout(() => {
+      handlerMap.handleCreate(title);
+      setIsLoading(false);
+      closeModal();
+    }, 2000);
   };
 
   return (
@@ -20,6 +24,7 @@ function ItemCreateModal({ isModalOpen, closeModal }) {
       closeModal={closeModal}
       handleSubmit={handleSubmit}
       title="Create list"
+      isLoading={isLoading}
     >
       <div>
         <input

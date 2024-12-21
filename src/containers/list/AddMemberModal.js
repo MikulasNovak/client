@@ -8,13 +8,16 @@ function AddMemberModal({ isModalOpen, closeModal }) {
   const { handlerMap, listId } = useContext(ListContext);
   const { userData } = useContext(UserContext);
   const [selectedUserId, setSelectedUserId] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    handlerMap.handleAddMember(listId, Number(selectedUserId));
-    setSelectedUserId("");
-    closeModal();
+    setIsLoading(true);
+    setTimeout(() => {
+      handlerMap.handleAddMember(listId, Number(selectedUserId));
+      setIsLoading(false);
+      closeModal();
+    }, 2000);
   };
 
   return (
@@ -23,6 +26,7 @@ function AddMemberModal({ isModalOpen, closeModal }) {
       closeModal={closeModal}
       title="Add Member"
       handleSubmit={handleSubmit}
+      isLoading={isLoading}
     >
       <div>
         <select
