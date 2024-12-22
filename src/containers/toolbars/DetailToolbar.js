@@ -7,12 +7,12 @@ import { ListContext } from "../../providers/ListProvider";
 import { useNavigate, useParams } from "react-router-dom";
 import Button from "../../components/button/Button";
 import UpdateLisModal from "../list/UpdateModal";
+import Popup from "reactjs-popup"; // Import reactjs-popup
 
 function DetailToolbar() {
   const { listData } = useContext(ListContext);
   const navigate = useNavigate();
   const { id } = useParams();
-
   const { t } = useTranslation();
 
   const [isModalItemCreateOpen, setIsModalItemCreateOpen] = useState(false);
@@ -46,23 +46,22 @@ function DetailToolbar() {
         ></i>
       </div>
       <div>
-        <div>
-          <i className="fa-solid fa-ellipsis"></i>
-        </div>
+        <Popup
+          trigger={<i className="fa-solid fa-ellipsis"></i>}
+          position="bottom right"
+          on="click"
+          closeOnDocumentClick
+        >
+          <div className="popup-content">
+            <Button
+              onClick={() => setIsModalAddMemberOpen(true)}
+              buttonText={t(`buttons.addMember`)}
+            />
+            <Button buttonText={t(`buttons.archiveList`)} />
+            <Button buttonText={t(`buttons.deleteList`)} />
+          </div>
+        </Popup>
         <div className="detailToolbarButtons">
-          <Button
-            className="detailToolbarArchiveList hidden"
-            buttonText={t(`buttons.archiveList`)}
-          />
-          <Button
-            className="detailToolbarAddMember hidden"
-            onClick={() => setIsModalAddMemberOpen(true)}
-            buttonText={t(`buttons.addMember`)}
-          />
-          <Button
-            className="detailToolbarDeleteList hidden"
-            buttonText={t(`buttons.deleteList`)}
-          />
           <Button
             className="detailToolbarAddItem"
             onClick={() => setIsModalItemCreateOpen(true)}
